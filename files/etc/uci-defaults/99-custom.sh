@@ -41,9 +41,11 @@ if [ "$count" -eq 1 ]; then
    uci set network.lan.proto='dhcp'
 elif [ "$count" -gt 1 ]; then
    # 提取第一个接口作为WAN
-   wan_ifname=$(echo "$ifnames" | awk '{print $2}')
+   # wan_ifname=$(echo "$ifnames" | awk '{print $2}')
+   wan_ifname=eth1
    # 剩余接口保留给LAN
-   lan_ifnames=$(echo "$ifnames" | cut -d ' ' -f2-)
+   # lan_ifnames=$(echo "$ifnames" | cut -d ' ' -f2-)
+   lan_ifnames=eth0
    # 设置WAN接口基础配置
    uci set network.wan=interface
    # 提取第一个接口作为WAN
